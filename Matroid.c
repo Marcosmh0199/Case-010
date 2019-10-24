@@ -1,6 +1,9 @@
 #include <stdbool.h>
+#include <stdio.h>
+
+int size = 10;
+
 struct Matroid{
-	int size;
 	int setS[10];
 	int setI[10];
 };
@@ -14,9 +17,10 @@ struct Matroid{
 
 	void functionPair(struct Matroid pMatroid){
 		int indexSetI = 0;
-		for(int currentElement = 0; currentElement < pMatroid.size; currentElement++){
+		for(int currentElement = 0; currentElement < size; currentElement++){
 			if(validatePair(pMatroid,currentElement)){
 				pMatroid.setI[indexSetI] = pMatroid.setS[currentElement];
+				indexSetI++;
 			}
 		}
 	}
@@ -30,9 +34,10 @@ struct Matroid{
 	
 	void functionOdd(struct Matroid pMatroid){
 		int indexSetI = 0;
-		for(int currentElement = 0; currentElement < pMatroid.size; currentElement++){
+		for(int currentElement = 0; currentElement < size; currentElement++){
 			if(validateOdd(pMatroid,currentElement)){
 				pMatroid.setI[indexSetI] = pMatroid.setS[currentElement];
+				indexSetI++;
 			}
 		}
 	}
@@ -46,15 +51,23 @@ struct Matroid{
 	
 	void functionGreaterThan(struct Matroid pMatroid){
 		int indexSetI = 0;
-		for(int currentElement = 0; currentElement < pMatroid.size; currentElement++){
-			if(validateOdd(pMatroid,currentElement)){
+		for(int currentElement = 0; currentElement < size; currentElement++){
+			if(greaterThan(pMatroid,currentElement)){
 				pMatroid.setI[indexSetI] = pMatroid.setS[currentElement];
+				indexSetI++;
 			}
 		}
 	}
 	
 	int main(){
 		struct Matroid m;
+		int pair = 2;
+		int odd = 1;
+		for(int currentIndex = 0; currentIndex < size; currentIndex++){
+			m.setS[currentIndex] = pair;
+			pair+=2;
+		}
+		
 		printf("Hola Mundo!");
 		return 1;
 	}
