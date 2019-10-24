@@ -59,6 +59,22 @@ struct Matroid{
 		}
 	}
 	
+	int * getIntersection(int array1[], int array2[]){
+		int repetidos[size];
+		int ptrRepetidos = 0;
+		
+		for(int index=0; index < sizeof(array1); index++){
+			for(int puntero=0; puntero < sizeof(array2); puntero++){
+				if(array1[index] == array2[puntero]) {
+					repetidos[ptrRepetidos] = array1[index];
+					ptrRepetidos++;
+				}
+			}
+		}
+		
+		return repetidos;
+	}
+	
 	int main(){
 		struct Matroid m;
 		int pair = 2;
