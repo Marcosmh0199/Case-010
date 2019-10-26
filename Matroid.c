@@ -1,13 +1,17 @@
 #include <stdbool.h>
 #include <stdio.h>
-
+#include "DinamicArray.h"
 int size = 10;
 
+
 struct Matroid{
+	//aqui van los dinamic array
 	int setS[10];
 	int setI[10];
 };
 
+	//Mae si se pasa de saico, ajuste estas funciones para que no sean con arrays normales, sino
+	//con los dinamic array si logra probarlos y adaptarlos al matroid
 	bool validatePair(struct Matroid pMatroid,int pCurrentElement){
 		if(pMatroid.setS[pCurrentElement] % 2 == 0){
 			return true;
@@ -60,6 +64,8 @@ struct Matroid{
 	}
 	
 	int main(){
+		
+		//Pruebe acá los dinamic array, usted vera como XD 
 		struct Matroid m;
 		int pair = 2;
 		int odd = 1;
