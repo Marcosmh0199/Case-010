@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Matroid.o
-LINKOBJ  = Matroid.o
+OBJ      = Matroid.o DinamicArray.o
+LINKOBJ  = Matroid.o DinamicArray.o
 LIBS     = -L"C:/cygwin64/lib" -static-libstdc++ -static-libgcc
 INCS     = -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include"
 CXXINCS  = -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include" -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++"
@@ -26,3 +26,6 @@ $(BIN): $(OBJ)
 
 Matroid.o: Matroid.c
 	$(CC) -c Matroid.c -o Matroid.o $(CFLAGS)
+
+DinamicArray.o: DinamicArray.c
+	$(CC) -c DinamicArray.c -o DinamicArray.o $(CFLAGS)
