@@ -1,4 +1,5 @@
 #include "DinamicArray.h"
+#include <stdio.h>
 
 void varray_init(varray **array) {
    *array = (varray*) malloc (sizeof(varray));
@@ -8,8 +9,7 @@ void varray_init(varray **array) {
    (*array)->index = -1;
 }
  
-void
-varray_push(varray *array, void *data) {
+void varray_push(varray *array, void *data) {
    size_t toallocate;
    size_t size = sizeof(void*);
    if ((array->allocated - array->used) < size) {
@@ -17,7 +17,8 @@ varray_push(varray *array, void *data) {
       array->memory = realloc(array->memory, toallocate);
       array->allocated = toallocate;
    }
- 
+   
+   printf("LOLO %i \n", data);
    array->memory[++array->index] = data;
    array->used = array->used + size;
 }
@@ -42,10 +43,10 @@ void varray_free(varray *array){
 }
  
 void* varray_get(varray *array, int index){
-   if (index < 0 || index > array->index)
+	if (index < 0 || index > array->index)
       return NULL;
- 
-   return array->memory[index];
+    
+    return array->memory[index];
 }
  
 void varray_insert(varray *array, int index, void *data){
@@ -53,4 +54,26 @@ void varray_insert(varray *array, int index, void *data){
       return;
  
    array->memory[index] = data;
+}
+
+int main(){
+	varray *array;  //Puntero
+	varray_init(&array); //direccion de un puntero;
+	int numero = 39;
+	void *ptrVoid = &numero;   //direccion de puntero;
+	
+	varray_push(array, ptrVoid);  //Insercion de elementos
+	/*numero = 6;
+	varray_push(array, ptrVoid);
+	numero = 37;
+	varray_push(array, ptrVoid);*/
+	
+	int pos = 0;
+	
+	int num = (int) varray_length(array);
+	int dato = (int) varray_get(array, pos);
+	
+	printf("Numero: %i y el valor de la posicion %i es: %i", num, pos, dato);
+	
+	return 0;
 }
