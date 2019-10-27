@@ -18,7 +18,7 @@ void varray_push(varray *array, void *data) {
       array->allocated = toallocate;
    }
    
-   printf("LOLO %i \n", data);
+   printf("Dato %i \n", *(int*)(data));
    array->memory[++array->index] = data;
    array->used = array->used + size;
 }
@@ -57,25 +57,28 @@ void varray_insert(varray *array, int index, void *data){
 }
 
 int main(){
-	varray *array;  //Puntero
-	varray_init(&array); //direccion de un puntero;
+	varray *array;
+	varray_init(&array);
 	int numero = 39;
-	void *ptrVoid = &numero;   //direccion de puntero;
+	void *ptrVoid = &numero;
 	
 	varray_push(array, ptrVoid);  //Insercion de elementos
-	/*numero = 6;
+	numero += 6;
 	varray_push(array, ptrVoid);
-	numero = 37;
-	varray_push(array, ptrVoid);*/
+	numero += 25;
+	varray_push(array, ptrVoid);
 	
-	int pos = 0;					
+	int pos = 1;					
+	
 	/*Creo que hay un problema con el manejo de la memoria pero no lo encuentro, el problema deberia estar en el
 	.  varray_push() pero no encuentro cual es el problema*/
+	/*La cosa es que no importa la posicion en la que uno saque en memoria del array (en el get()) siempre retorna el ultimo valor insertado*/
 	
-	int num = (int) varray_length(array);
-	int dato = (int) varray_get(array, pos);
+	int largo = (int) varray_length(array);
 	
-	printf("Numero: %i y el valor de la posicion %i es: %i", num, pos, dato);
+	int dato = *(int*)(varray_get(array, pos));   //Hay que hacer casting a un puntero del tipo necesario y ver el contenido del puntero 
+	
+	printf("Largo: %i y el valor de la posicion %i es: %i", largo, pos, dato);
 	
 	return 0;
 }
