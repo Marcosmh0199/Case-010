@@ -68,7 +68,9 @@ int main(){
 	numero = 37;
 	varray_push(array, ptrVoid);*/
 	
-	int pos = 0;
+	int pos = 0;					
+	/*Creo que hay un problema con el manejo de la memoria pero no lo encuentro, el problema deberia estar en el
+	.  varray_push() pero no encuentro cual es el problema*/
 	
 	int num = (int) varray_length(array);
 	int dato = (int) varray_get(array, pos);
