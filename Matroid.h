@@ -6,12 +6,16 @@ struct Matroid{
 	varray *setI;
 };
 
-bool validatePair(struct Matroid pMatroid,int pCurrentElement);
+void initializeArray(struct Matroid *pMatroid);
 
-bool validateOdd(struct Matroid pMatroid,int pCurrentElement);
+void functionPair(struct Matroid *pMatroid);
 
-void functionOdd(struct Matroid pMatroid);
+bool validatePair(int pCurrentElement);
 
-bool greaterThan(struct Matroid pMatroid, int pCurrentElement);
+bool validateOdd(int pCurrentElement);
 
-void functionGreaterThan(struct Matroid pMatroid);
+void functionOdd(struct Matroid *pMatroid);
+
+bool validateVowel(char pCurrentElement);
+
+void functionVowel(struct Matroid *pMatroid);

@@ -1,5 +1,4 @@
 #include "DinamicArray.h"
-#include <stdio.h>
 
 void varray_init(varray **array) {
    *array = (varray*) malloc (sizeof(varray));
@@ -7,6 +6,7 @@ void varray_init(varray **array) {
    (*array)->allocated = 0;
    (*array)->used = 0;
    (*array)->index = -1;
+   
 }
  
 void varray_push(varray *array, void *data) {
@@ -18,7 +18,7 @@ void varray_push(varray *array, void *data) {
       array->allocated = toallocate;
    }
    
-   printf("Dato %i \n", *(int*)(data));
+   //printf("Dato %i \n", *(int*)(data));
    array->memory[++array->index] = data;
    array->used = array->used + size;
 }
@@ -45,7 +45,6 @@ void varray_free(varray *array){
 void* varray_get(varray *array, int index){
 	if (index < 0 || index > array->index)
       return NULL;
-    
     return array->memory[index];
 }
  
@@ -55,7 +54,7 @@ void varray_insert(varray *array, int index, void *data){
  
    array->memory[index] = data;
 }
-
+/*
 int main(){
 	varray *array;
 	varray_init(&array);
@@ -82,4 +81,4 @@ int main(){
 	printf("Largo: %i y el valor de la posicion %i es: %i", largo, pos, dato);
 	
 	return 0;
-}
+}*/
