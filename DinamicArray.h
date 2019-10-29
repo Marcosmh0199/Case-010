@@ -1,11 +1,12 @@
 #include  <stddef.h>
 #include  <stdlib.h>
-typedef struct varray_t
-{
+
+typedef struct varray_t {
    void **memory;
    size_t allocated;
    size_t used;
    int index;
+   
 } varray;
  
 void varray_init(varray **array);
