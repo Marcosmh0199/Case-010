@@ -73,7 +73,7 @@ int main(){
 	ptrVoid = &numero2;
 	varray_push(array, ptrVoid);
 		
-	int pos = 1;
+	int pos = 3;
 	
 	int largo = (int) varray_length(array);
 	

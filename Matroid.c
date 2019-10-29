@@ -63,7 +63,7 @@ struct Matroid{
 		}
 	}
 	
-	int main(){
+	/*int main(){
 		
 		//Pruebe acá los dinamic array, usted vera como XD 
 		struct Matroid m;
@@ -76,5 +76,5 @@ struct Matroid{
 		
 		printf("Hola Mundo!");
 		return 1;
-	}
+	}*/
 
