@@ -22,7 +22,7 @@ void varray_push(varray *array, void *data) {
    array->memory[++array->index] = data;
    array->used = array->used + size;
 }
- 
+
 int varray_length(varray *array) {
    return array->index + 1;
 }
@@ -59,20 +59,21 @@ void varray_insert(varray *array, int index, void *data){
 int main(){
 	varray *array;
 	varray_init(&array);
+	
 	int numero = 39;
+	int numero1 = 45;
+	int numero2 = 77;
+	
 	void *ptrVoid = &numero;
 	
+	
 	varray_push(array, ptrVoid);  //Insercion de elementos
-	numero += 6;
+	ptrVoid = &numero1;
 	varray_push(array, ptrVoid);
-	numero += 25;
+	ptrVoid = &numero2;
 	varray_push(array, ptrVoid);
-	
-	int pos = 1;					
-	
-	/*Creo que hay un problema con el manejo de la memoria pero no lo encuentro, el problema deberia estar en el
-	.  varray_push() pero no encuentro cual es el problema*/
-	/*La cosa es que no importa la posicion en la que uno saque en memoria del array (en el get()) siempre retorna el ultimo valor insertado*/
+		
+	int pos = 1;
 	
 	int largo = (int) varray_length(array);
 	
