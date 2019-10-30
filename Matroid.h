@@ -1,21 +1,18 @@
 #include <stdbool.h>
 #include <stdio.h>
-#include "DinamicArray.h"
-struct Matroid{
-	varray *setS;
-	varray *setI;
-};
+typedef struct Matroid{
+	int setS[10];
+	int setI[10];
+} Matroid;
 
-void initializeArray(struct Matroid *pMatroid);
+bool isPair(int pCurrentElement);
 
-void functionPair(struct Matroid *pMatroid);
+void functionIsPair(struct Matroid *pMatroid);
 
-bool validatePair(int pCurrentElement);
+bool isOdd(int pCurrentElement);
 
-bool validateOdd(int pCurrentElement);
+void functionIsOdd(struct Matroid *pMatroid);
 
-void functionOdd(struct Matroid *pMatroid);
+bool isBig(int pCurrentElement);
 
-bool validateVowel(char pCurrentElement);
-
-void functionVowel(struct Matroid *pMatroid);
+void functionBig(struct Matroid *pMatroid);
