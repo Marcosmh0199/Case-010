@@ -16,3 +16,5 @@ void functionIsOdd(struct Matroid *pMatroid);
 bool isBig(int pCurrentElement);
 
 void functionBig(struct Matroid *pMatroid);
+
+int* interseccion(int numeros1[10], int numeros2[10], int size1, int size2);
