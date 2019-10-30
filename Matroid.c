@@ -42,20 +42,16 @@ void functionBig(struct Matroid *pMatroid){
 	}
 }
 
-int* interseccion(int numeros1[10], int numeros2[10], int size1, int size2) {
-	int max=0;
+int* interseccion(int numeros1[], int numeros2[]) {
 	
-	if(size1 >= size2){
-		max = size1;
-	} else{
-		max = size2;	
-	}
-	
+	int lengthNumeros1 = (int)( sizeof(&numeros1) / sizeof(&numeros1[0]) );
+	int lengthNumeros2 = (int)( sizeof(&numeros2) / sizeof(&numeros2[0]) );
+	int max= lengthNumeros1 ^ ((lengthNumeros1 ^ lengthNumeros2) & -(lengthNumeros1 < lengthNumeros2));  
 	int interAux[max];
 	int index = 0;
 	
-	for(int i=0; i < size1; i++){
-		for(int j=0; j < size2; j++){
+	for(int i=0; i < lengthNumeros1; i++){
+		for(int j=0; j < lengthNumeros2; j++){
 			if(numeros1[i] == numeros2[j]){
 				interAux[index++] = numeros1[i];
 			}
