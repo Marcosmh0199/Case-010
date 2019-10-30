@@ -1,17 +1,17 @@
 # Project: Case010
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe
-CC       = gcc.exe
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = Matroid.o DinamicArray.o
-LINKOBJ  = Matroid.o DinamicArray.o
-LIBS     = -L"C:/cygwin64/lib" -static-libstdc++ -static-libgcc
+OBJ      = Matroid.o main.o
+LINKOBJ  = Matroid.o main.o
+LIBS     = -L"C:/cygwin64/lib" -static-libstdc++ -static-libgcc -g3
 INCS     = -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include"
 CXXINCS  = -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include" -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++"
 BIN      = Case010.exe
-CXXFLAGS = $(CXXINCS) 
-CFLAGS   = $(INCS) 
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -27,5 +27,5 @@ $(BIN): $(OBJ)
 Matroid.o: Matroid.c
 	$(CC) -c Matroid.c -o Matroid.o $(CFLAGS)
 
-DinamicArray.o: DinamicArray.c
-	$(CC) -c DinamicArray.c -o DinamicArray.o $(CFLAGS)
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
