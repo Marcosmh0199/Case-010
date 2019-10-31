@@ -15,6 +15,10 @@ void functionIsOdd(Matroid pMatroid[], int matroidQuantity);
 
 bool isBig(int pCurrentElement);
 
-void functionBig(Matroid pMatroid[], int matroidQuantity);
+void functionBig(Matroid *pMatroid[], int matroidQuantity);
 
 int* interseccion(int numeros1[], int numeros2[]);
+
+int interseccionQ(int numeros1[], int numeros2[]);
+
+void calculateIntersection(Matroid *pMatroid[], int matroidQuantity);

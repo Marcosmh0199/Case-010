@@ -18,18 +18,18 @@ int main(){
 		pairOddMatroid.setS[index] = pairOdd++;
 		mixMatroid.setS[index] = mix++;
 	}
-	Matroid testA[3] = {pairMatroid, oddMatroid, bigMatroid};
-	Matroid testB[5] = {pairMatroid, oddMatroid, bigMatroid, pairOddMatroid, mixMatroid};
+	Matroid *testA[3] = {&pairMatroid, &oddMatroid, &bigMatroid};
+	Matroid *testB[5] = {&pairMatroid, &oddMatroid, &bigMatroid, &pairOddMatroid, &mixMatroid};
 	
 	//a)
 	printf("Parte a) \n\n");
 	#pragma omp parallel sections
 	
 	#pragma omp parallel section
-	functionIsPair(testA, 3);
+	//functionIsPair(testA, 3);
 	
 	#pragma omp parallel section
-	functionIsOdd(testA, 3);
+	//functionIsOdd(testA, 3);
 	
 	#pragma omp parallel section
 	functionBig(testA, 3);
@@ -43,6 +43,11 @@ int main(){
 	oddMatroid.setS[5] = 101;
 	pairOddMatroid.setS[5] = 101;
 	mixMatroid.setS[3] = 101;
+	#pragma omp parallel
+	functionBig(testB, 5);
+	
+	printf("\n R: %i \n",mixMatroid.setI[0]);
+	calculateIntersection(testB, 5);
 	
 	
 	return 1;
