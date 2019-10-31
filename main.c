@@ -34,7 +34,16 @@ int main(){
 	#pragma omp parallel section
 	functionBig(testA, 3);
 	
-	printf("\n\nParte a) \n\n");
+	printf("Fin Parte a)----------------------------\n");
+	
+	printf("\n\nParte b) \n\n");
+	
+	//Se ajustan los matroids para que todos tengan al menos 1 elemento que sea valido para una misma funcion y que cumpla para la interseccion
+	pairMatroid.setS[9] = 101;
+	oddMatroid.setS[5] = 101;
+	pairOddMatroid.setS[5] = 101;
+	mixMatroid.setS[3] = 101;
+	
 	
 	return 1;
 }
