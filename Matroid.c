@@ -13,7 +13,7 @@ void functionIsPair(Matroid pMatroid[], int matroidQuantity){
 		for(int currentNumber = 0; currentNumber < length; currentNumber++){
 			int number = pMatroid[currentMatroid].setS[currentNumber];
 			if(isPair(number)){
-				pMatroid[currentMatroid].setI[pairQuantity] = number;
+				pMatroid[currentMatroid].setI[pairQuantity++] = number;
 				printf("%d ",number);
 			}
 		}
@@ -35,7 +35,7 @@ void functionIsOdd(Matroid pMatroid[], int matroidQuantity){
 		for(int currentNumber = 0; currentNumber < length; currentNumber++){
 			int number = pMatroid[currentMatroid].setS[currentNumber];
 			if(isOdd(number)){
-				pMatroid[currentMatroid].setI[oddQuantity] = number;
+				pMatroid[currentMatroid].setI[oddQuantity++] = number;
 				printf("%d ",number);
 			}
 		}
@@ -57,7 +57,7 @@ void functionBig(Matroid *pMatroid[], int matroidQuantity){
 		for(int currentNumber = 0; currentNumber < length; currentNumber++){
 			int number = pMatroid[currentMatroid]->setS[currentNumber];
 			if(isBig(number)){
-				pMatroid[currentMatroid]->setI[bigQuantity] = number;
+				pMatroid[currentMatroid]->setI[bigQuantity++] = number;
 				printf("%d ",number);
 			}
 		}
@@ -82,7 +82,6 @@ int* interseccion(int numeros1[], int numeros2[]) {
 	#pragma omp parallel for
 	for(int i=0; i < lengthNumeros1; i++){
 		for(int j=0; j < lengthNumeros2; j++){
-			printf("ASD: %i %i \n", numeros1[i], numeros2[j]);
 			if(numeros1[i] == numeros2[j]){
 				interAux[index++] = numeros1[i];
 				
@@ -128,14 +127,10 @@ int interseccionQ(int numeros1[], int numeros2[]) {
 void calculateIntersection(Matroid *pMatroid[], int matroidQuantity){
 	int setsI[matroidQuantity][10];
 	int *intersection = pMatroid[0]->setI;
-	printf("CMAMO: %i \n\n", intersection[0]);
-	
-	printf("MyM \n");
 	for(int index=0; index<matroidQuantity; index++){
 		intersection = interseccion(intersection, pMatroid[index]->setI);
-		printf("C++: %i \n", intersection[0]);
+		
 	}
-	printf("FriendZone \n");
 	for(int i=0; i<1; i++){
 		printf("%i \n",intersection[i]);
 	}
