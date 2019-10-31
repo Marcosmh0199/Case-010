@@ -7,14 +7,14 @@ typedef struct Matroid{
 
 bool isPair(int pCurrentElement);
 
-void functionIsPair(struct Matroid *pMatroid);
+void functionIsPair(Matroid pMatroid[]);
 
 bool isOdd(int pCurrentElement);
 
-void functionIsOdd(struct Matroid *pMatroid);
+void functionIsOdd(Matroid pMatroid[]);
 
 bool isBig(int pCurrentElement);
 
-void functionBig(struct Matroid *pMatroid);
+void functionBig(Matroid pMatroid[]);
 
 int* interseccion(int numeros1[], int numeros2[]);

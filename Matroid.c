@@ -4,41 +4,61 @@ bool isPair(int pCurrentElement){
 	return pCurrentElement % 2 == 0;
 }
 
-void functionIsPair(struct Matroid *pMatroid){
-	int length  = (int)( sizeof(pMatroid->setS) / sizeof(pMatroid->setS[0]) );	
-	int pairQuantity = 0;
-	for(int currentNumber = 0; currentNumber < length; currentNumber++){
-		if(isPair(pMatroid->setS[currentNumber])){
-			pMatroid->setI[pairQuantity++] = pMatroid->setS[currentNumber];
+void functionIsPair(Matroid pMatroid[]){
+	int matroidQuantity = (int)( sizeof(&pMatroid) / sizeof(&pMatroid[0]) );
+	for(int currentMatroid; currentMatroid < matroidQuantity; currentMatroid++){
+		int length  = (int)( sizeof(pMatroid[currentMatroid].setS) / sizeof(pMatroid[currentMatroid].setS[0]) );	
+		int pairQuantity = 0;
+		for(int currentNumber = 0; currentNumber < length; currentNumber++){
+			int number = pMatroid[currentMatroid].setS[currentNumber];
+			if(isPair(number)){
+				pMatroid[currentMatroid].setI[pairQuantity] = number;
+				printf("%d",number);
+			}
 		}
+		printf("\n");
 	}
+
 }
 	
 bool isOdd(int pCurrentElement){
 	return pCurrentElement % 2 == 1;
 }
 	
-void functionIsOdd(struct Matroid *pMatroid){
-	int length  = (int)( sizeof(pMatroid->setS) / sizeof(pMatroid->setS[0]) );	
-	int oddQuantity = 0;
-	for(int currentNumber = 0; currentNumber < length; currentNumber++){
-		if(isOdd(pMatroid->setS[currentNumber])){
-			pMatroid->setI[oddQuantity++] = pMatroid->setS[currentNumber];
+void functionIsOdd(Matroid pMatroid[]){
+	int matroidQuantity = (int)( sizeof(&pMatroid) / sizeof(&pMatroid[0]) );
+	for(int currentMatroid; currentMatroid < matroidQuantity; currentMatroid++){
+		int length  = (int)( sizeof(pMatroid->setS) / sizeof(pMatroid->setS[0]) );	
+		int oddQuantity = 0;
+		for(int currentNumber = 0; currentNumber < length; currentNumber++){
+			int number = pMatroid[currentMatroid].setS[currentNumber];
+			if(isOdd(number)){
+				pMatroid[currentMatroid].setI[oddQuantity] = number;
+				printf("%d",number);
+			}
 		}
+		printf("\n");
 	}
+
 }
 	
 bool isBig(int pCurrentElement){
 	return pCurrentElement > 100;
 }
 
-void functionBig(struct Matroid *pMatroid){
-	int length  = (int)( sizeof(pMatroid->setS) / sizeof(pMatroid->setS[0]) );
-	int bigQuantity = 0;
-	for(int currentNumber = 0; currentNumber < length; currentNumber++){
-		if(isBig(pMatroid->setS[currentNumber])){
-			pMatroid->setI[bigQuantity++] = pMatroid->setS[currentNumber];
+void functionBig(Matroid pMatroid[]){
+	int matroidQuantity = (int)( sizeof(&pMatroid) / sizeof(&pMatroid[0]) );
+	for(int currentMatroid; currentMatroid < matroidQuantity; currentMatroid++){
+		int length  = (int)( sizeof(pMatroid->setS) / sizeof(pMatroid->setS[0]) );
+		int bigQuantity = 0;
+		for(int currentNumber = 0; currentNumber < length; currentNumber++){
+			int number = pMatroid[currentMatroid].setS[currentNumber];
+			if(isBig(number)){
+				pMatroid[currentMatroid].setI[bigQuantity] = number;
+				printf("%d",number);
+			}
 		}
+		printf("\n");
 	}
 }
 
@@ -85,10 +105,6 @@ int main(){
 		bigMatroid.setS[index] = big++;
 		pairOddMatroid.setS[index] = pairOdd++;
 		mixMatroid.setS[index] = mix++;
-	}
-	functionIsPair(&pairMatroid);
-	for(int i = 0; i < 10; i++){
-		printf("%d \n",pairMatroid.setI[i]);
 	}
 	Matroid testA[] = {pairMatroid, oddMatroid, bigMatroid};
 	Matroid testB[] = {pairMatroid, oddMatroid, bigMatroid, pairOddMatroid, mixMatroid};
