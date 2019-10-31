@@ -68,31 +68,4 @@ int* interseccion(int numeros1[], int numeros2[]) {
 	return i;
 }
 
-int main(){	
-	Matroid pairMatroid;
-	Matroid oddMatroid;
-	Matroid bigMatroid;
-	Matroid pairOddMatroid;
-	Matroid mixMatroid;
-	int pair= 0;
-	int odd = 0;
-	int big = 100;
-	int pairOdd = 0;
-	int mix = 96;
-	for(int index = 0; index < 10; index++ ){
-		pairMatroid.setS[index] = pair +=2;
-		oddMatroid.setS[index] = odd += 2;
-		bigMatroid.setS[index] = big++;
-		pairOddMatroid.setS[index] = pairOdd++;
-		mixMatroid.setS[index] = mix++;
-	}
-	functionIsPair(&pairMatroid);
-	for(int i = 0; i < 10; i++){
-		printf("%d \n",pairMatroid.setI[i]);
-	}
-	Matroid testA[] = {pairMatroid, oddMatroid, bigMatroid};
-	Matroid testB[] = {pairMatroid, oddMatroid, bigMatroid, pairOddMatroid, mixMatroid};
-	return 1;
-}
-
 

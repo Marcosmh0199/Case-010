@@ -4,11 +4,11 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = Matroid.o DinamicArray.o main.o
-LINKOBJ  = Matroid.o DinamicArray.o main.o
-LIBS     = -L"C:/cygwin64/lib" -static-libstdc++ -static-libgcc -g3
-INCS     = -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include"
-CXXINCS  = -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include" -I"C:/cygwin64/lib/gcc/x86_64-pc-cygwin/7.4.0/include/c++"
+OBJ      = Matroid.o main.o
+LINKOBJ  = Matroid.o main.o
+LIBS     = -L"C:/MinGW/lib" -L"C:/MinGW/mingw32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"C:/MinGW/include" -I"C:/MinGW/lib/gcc/mingw32/8.2.0/include"
+CXXINCS  = -I"C:/MinGW/include" -I"C:/MinGW/lib/gcc/mingw32/8.2.0/include" -I"C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++"
 BIN      = Case010.exe
 CXXFLAGS = $(CXXINCS) -g3
 CFLAGS   = $(INCS) -g3
@@ -26,9 +26,6 @@ $(BIN): $(OBJ)
 
 Matroid.o: Matroid.c
 	$(CC) -c Matroid.c -o Matroid.o $(CFLAGS)
-
-DinamicArray.o: DinamicArray.c
-	$(CC) -c DinamicArray.c -o DinamicArray.o $(CFLAGS)
 
 main.o: main.c
 	$(CC) -c main.c -o main.o $(CFLAGS)
