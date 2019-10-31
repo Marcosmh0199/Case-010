@@ -4,62 +4,66 @@ bool isPair(int pCurrentElement){
 	return pCurrentElement % 2 == 0;
 }
 
-void functionIsPair(Matroid pMatroid[]){
-	int matroidQuantity = (int)( sizeof(&pMatroid) / sizeof(&pMatroid[0]) );
-	for(int currentMatroid; currentMatroid < matroidQuantity; currentMatroid++){
+void functionIsPair(Matroid pMatroid[], int matroidQuantity){
+	#pragma omp parallel for
+	for(int currentMatroid = 0; currentMatroid < matroidQuantity; currentMatroid++){
 		int length  = (int)( sizeof(pMatroid[currentMatroid].setS) / sizeof(pMatroid[currentMatroid].setS[0]) );	
 		int pairQuantity = 0;
+		#pragma omp parallel for
 		for(int currentNumber = 0; currentNumber < length; currentNumber++){
 			int number = pMatroid[currentMatroid].setS[currentNumber];
 			if(isPair(number)){
 				pMatroid[currentMatroid].setI[pairQuantity] = number;
-				printf("%d",number);
+				printf("%d ",number);
 			}
 		}
 		printf("\n");
 	}
-
+	printf("FIN PAR \n");
 }
 	
 bool isOdd(int pCurrentElement){
 	return pCurrentElement % 2 == 1;
 }
 	
-void functionIsOdd(Matroid pMatroid[]){
-	int matroidQuantity = (int)( sizeof(&pMatroid) / sizeof(&pMatroid[0]) );
-	for(int currentMatroid; currentMatroid < matroidQuantity; currentMatroid++){
+void functionIsOdd(Matroid pMatroid[], int matroidQuantity){
+	#pragma omp parallel for
+	for(int currentMatroid=0; currentMatroid < matroidQuantity; currentMatroid++){
 		int length  = (int)( sizeof(pMatroid->setS) / sizeof(pMatroid->setS[0]) );	
 		int oddQuantity = 0;
+		#pragma omp parallel for
 		for(int currentNumber = 0; currentNumber < length; currentNumber++){
 			int number = pMatroid[currentMatroid].setS[currentNumber];
 			if(isOdd(number)){
 				pMatroid[currentMatroid].setI[oddQuantity] = number;
-				printf("%d",number);
+				printf("%d ",number);
 			}
 		}
 		printf("\n");
 	}
-
+	printf("FIN Impar \n");
 }
 	
 bool isBig(int pCurrentElement){
 	return pCurrentElement > 100;
 }
 
-void functionBig(Matroid pMatroid[]){
-	int matroidQuantity = (int)( sizeof(&pMatroid) / sizeof(&pMatroid[0]) );
-	for(int currentMatroid; currentMatroid < matroidQuantity; currentMatroid++){
+void functionBig(Matroid pMatroid[], int matroidQuantity){
+	#pragma omp parallel for
+	for(int currentMatroid=0; currentMatroid < matroidQuantity; currentMatroid++){
 		int length  = (int)( sizeof(pMatroid->setS) / sizeof(pMatroid->setS[0]) );
 		int bigQuantity = 0;
+		#pragma omp parallel for
 		for(int currentNumber = 0; currentNumber < length; currentNumber++){
 			int number = pMatroid[currentMatroid].setS[currentNumber];
 			if(isBig(number)){
 				pMatroid[currentMatroid].setI[bigQuantity] = number;
-				printf("%d",number);
+				printf("%d ",number);
 			}
 		}
 		printf("\n");
 	}
+	printf("FIN Mayor \n");
 }
 
 int* interseccion(int numeros1[], int numeros2[]) {
@@ -70,6 +74,7 @@ int* interseccion(int numeros1[], int numeros2[]) {
 	int interAux[max];
 	int index = 0;
 	
+	#pragma omp parallel for
 	for(int i=0; i < lengthNumeros1; i++){
 		for(int j=0; j < lengthNumeros2; j++){
 			if(numeros1[i] == numeros2[j]){
@@ -86,29 +91,6 @@ int* interseccion(int numeros1[], int numeros2[]) {
 	int *i = interseccion;
 	
 	return i;
-}
-
-int main(){	
-	Matroid pairMatroid;
-	Matroid oddMatroid;
-	Matroid bigMatroid;
-	Matroid pairOddMatroid;
-	Matroid mixMatroid;
-	int pair= 0;
-	int odd = 0;
-	int big = 100;
-	int pairOdd = 0;
-	int mix = 96;
-	for(int index = 0; index < 10; index++ ){
-		pairMatroid.setS[index] = pair +=2;
-		oddMatroid.setS[index] = odd += 2;
-		bigMatroid.setS[index] = big++;
-		pairOddMatroid.setS[index] = pairOdd++;
-		mixMatroid.setS[index] = mix++;
-	}
-	Matroid testA[] = {pairMatroid, oddMatroid, bigMatroid};
-	Matroid testB[] = {pairMatroid, oddMatroid, bigMatroid, pairOddMatroid, mixMatroid};
-	return 1;
 }
 
 
